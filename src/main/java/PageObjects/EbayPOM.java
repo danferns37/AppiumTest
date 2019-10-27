@@ -2,17 +2,22 @@ package PageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.functions.ExpectedCondition;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 
 public class EbayPOM {
-    AppiumDriver driver;
+    AppiumDriver  driver;
 
     public EbayPOM(AppiumDriver driver) {
 
@@ -44,6 +49,10 @@ public class EbayPOM {
 
          Actions action = new Actions(driver);
          driver.getKeyboard().pressKey(Keys.ENTER);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOf(Pop_up_check));
+
+
          return Pop_up_check.getText().toString();
 
 
